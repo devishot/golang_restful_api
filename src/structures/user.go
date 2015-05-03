@@ -5,7 +5,6 @@ type User struct {
   FullName         string  `json:"full_name"        sql:"full_name"`
   StudyYear         int    `json:"study_year"       sql:"study_year"`
   StudyFaculty      string `json:"study_faculty"    sql:"study_faculty"`
-  Age               int    `json:"age"              sql:"age"`
   InstaUserID       int    `json:"insta_user_id"    sql:"insta_user_id"`
   InstaUserName     string `json:"insta_user_name"  sql:"insta_user_name"`
 }
