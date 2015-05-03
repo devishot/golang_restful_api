@@ -43,6 +43,28 @@ func GetUser(r render.Render, params martini.Params) {//, db *mgo.Database
   }
 }
 
+func GetUsers(r render.Render, params martini.Params) {//, db *mgo.Database
+  q := fmt.Sprintf("SELECT %s FROM user", sqlstruct.Columns(structures.User{}))
+  rows, err := GetDB().Query(q)
+  checkErr(err)
+
+  var users []structures.User
+  var u structures.User
+  for rows.Next() {
+    err = sqlstruct.Scan(&u, rows)
+    checkErr(err)
+    fmt.Println(u, err)
+
+    users = append(users, u)
+  }
+  err = rows.Err()
+  checkErr(err)
+
+  fmt.Println(users)
+
+  r.JSON(200, users)
+}
+
 func CreateUser(resp render.Render, req *http.Request) {
   u := getPostUser(req)
 

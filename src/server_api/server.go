@@ -23,10 +23,9 @@ func RunServer() {
 
 
   m.Group("/users", func(r martini.Router) {
-    r.Get("/:insta_user_id", GetUser)
+    r.Get("/", GetUsers)
     r.Post("/", CreateUser)
-    // r.Put("/update/:id", UpdateBook)
-    // r.Delete("/delete/:id", DeleteBook)
+    r.Get("/:insta_user_id/", GetUser)
   })
 
 
