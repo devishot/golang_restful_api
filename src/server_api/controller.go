@@ -3,6 +3,7 @@ package server_api
 import (
   "fmt"
   "strconv"
+  "encoding/json"
 
   _ "github.com/mattn/go-sqlite3"
   "github.com/kisielk/sqlstruct"
@@ -31,7 +32,15 @@ func GetUser(r render.Render, params martini.Params) {//, db *mgo.Database
 
   fmt.Println(params["insta_user_id"])
 
-  r.JSON(200, u)
+  if u.InstaUserID != 0 {
+    r.JSON(200, u)
+    fmt.Println("here")
+  } else {
+    fmt.Println("now there")
+    errorResp, err := json.Marshal(map[string]string{"error": "user not found"})
+    checkErr(err)
+    r.JSON(404, errorResp)
+  }
 }
 
 func CreateUser(resp render.Render, req *http.Request) {
