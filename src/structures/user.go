@@ -2,13 +2,13 @@ package structures
 
 
 type User struct {
-  FirstName         string `json:"first_name"`
-  LastName          string `json:"last_name"`
-  StudyYear         int    `json:"study_year"`
-  StudyFaculty      int    `json:"study_faculty"`
-  Age               int    `json:"age"`
-  InstaUserID       int `json:"insta_user_id"`
-  InstaUserName     string `json:"insta_user_name"`
+  FirstName         string `json:"first_name"       sql:"first_name"`
+  LastName          string `json:"last_name"        sql:"last_name"`
+  StudyYear         int    `json:"study_year"       sql:"study_year"`
+  StudyFaculty      string `json:"study_faculty"    sql:"study_faculty"`
+  Age               int    `json:"age"              sql:"age"`
+  InstaUserID       int    `json:"insta_user_id"    sql:"insta_user_id"`
+  InstaUserName     string `json:"insta_user_name"  sql:"insta_user_name"`
 }
 
 
