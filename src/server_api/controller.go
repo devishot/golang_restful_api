@@ -47,10 +47,10 @@ func CreateUser(resp render.Render, req *http.Request) {
   u := getPostUser(req)
 
   //fmt.Println(sqlstruct.Columns(structures.User{}))
-  //=> age, first_name, insta_user_id, insta_user_name, last_name, study_faculty, study_year
+  //=> age, full_name, insta_user_id, insta_user_name, study_faculty, study_year
 
-  q := fmt.Sprintf("INSERT INTO user(%s) values(%d, '%s', %d, '%s', '%s', '%s', %d)", sqlstruct.Columns(structures.User{}),
-                   u.Age, u.FirstName, u.InstaUserID, u.InstaUserName, u.LastName, u.StudyFaculty, u.StudyYear)
+  q := fmt.Sprintf("INSERT INTO user(%s) values(%d, '%s', %d, '%s', '%s', %d)", sqlstruct.Columns(structures.User{}),
+                   u.Age, u.FullName, u.InstaUserID, u.InstaUserName, u.StudyFaculty, u.StudyYear)
   _, err := db.Exec(q)
   checkErr(err)
 
@@ -70,8 +70,7 @@ func getPostUser(r *http.Request) structures.User {
   u := structures.User{
     InstaUserID: int(id),
     InstaUserName: r.PostFormValue("username"),
-    FirstName: r.PostFormValue("first_name"),
-    LastName: r.PostFormValue("last_name"),
+    FullName: r.PostFormValue("full_name"),
     StudyYear: int(study_year),
     StudyFaculty: r.PostFormValue("study_faculty"),
     Age: int(age)}

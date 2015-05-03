@@ -2,8 +2,7 @@ package structures
 
 
 type User struct {
-  FirstName         string `json:"first_name"       sql:"first_name"`
-  LastName          string `json:"last_name"        sql:"last_name"`
+  FullName         string  `json:"full_name"        sql:"full_name"`
   StudyYear         int    `json:"study_year"       sql:"study_year"`
   StudyFaculty      string `json:"study_faculty"    sql:"study_faculty"`
   Age               int    `json:"age"              sql:"age"`
