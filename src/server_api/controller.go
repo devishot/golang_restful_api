@@ -59,7 +59,7 @@ func CreateUser(resp render.Render, req *http.Request) {
 
 
 func getPostUser(r *http.Request) structures.User {
-  id, err := strconv.ParseInt(r.PostFormValue("id"), 10, 0)
+  id, err := strconv.ParseInt(r.PostFormValue("insta_user_id"), 10, 0)
   checkErr(err)
   study_year, err := strconv.ParseInt(r.PostFormValue("study_year"), 10, 0)
   checkErr(err)
@@ -67,7 +67,7 @@ func getPostUser(r *http.Request) structures.User {
 
   u := structures.User{
     InstaUserID: int(id),
-    InstaUserName: r.PostFormValue("username"),
+    InstaUserName: r.PostFormValue("insta_user_name"),
     FullName: r.PostFormValue("full_name"),
     StudyYear: int(study_year),
     StudyFaculty: r.PostFormValue("study_faculty")}
